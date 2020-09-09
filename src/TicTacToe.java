@@ -4,26 +4,13 @@ public class TicTacToe {
     String[][] arrays;
 
     public TicTacToe() {
-        this.arrays = new String[][]{new String[]{"_", "_", "_"},new String[]{"_", "_", "_"} ,new String[]{"_", "_", "_"}};
+        this.arrays = new String[][]{new String[]{"_", "_", "_", "_"},new String[]{"_", "_", "_", "_"} ,new String[]{"_", "_", "_", "_"}};
     }
 
     public void playerTurn(String user, String point) {
         String[] userPoint = point.split(",");
-        String[] yArray = returnYArray(Integer.valueOf(userPoint[1]));
+        String[] yArray = this.arrays[(Integer.valueOf(userPoint[1]))-1];
         Array.set(yArray, Integer.valueOf(userPoint[0])-1, user);
-    }
-
-    public String[] returnYArray(Integer userValue) {
-        switch (userValue) {
-            case 1:
-                return this.arrays[0];
-            case 2:
-                return this.arrays[1];
-            case 3:
-                return this.arrays[2];
-            default:
-                return null;
-        }
     }
 
     public boolean connectThreeHorizontal(String user) {
@@ -58,17 +45,11 @@ public class TicTacToe {
     }
 
     public void printTicTacToe() {
-        for (String slot : arrays[2]) {
-            System.out.print(slot + ",");
+        for (int i = arrays.length - 1; i >= 0; i --) {
+            for (String slot : arrays[i]) {
+                System.out.print(slot + ",");
+            }
+            System.out.println("");
         }
-        System.out.println("");
-        for (String slot : arrays[1]) {
-            System.out.print(slot + ",");
-        }
-        System.out.println("");
-        for (String slot : arrays[0]) {
-            System.out.print(slot + ",");
-        }
-        System.out.println("");
     }
 }

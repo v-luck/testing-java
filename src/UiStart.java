@@ -9,19 +9,32 @@ public class UiStart {
     }
 
     public void start() {
-        Boolean winner = true;
-        String winnerName = null;
-        String user = "x";
-        while (winner == true) {
+        while (true) {
+            String user = "x";
             ticTacToe.printTicTacToe();
             if (user.equals("x")) {
-                System.out.print("X's turn. Enter x,y coordinate: ");
-                String coordinate = scanner.nextLine();
-                ticTacToe.playerTurn("x", coordinate);
-                checkTrue("x");
+                if (playTicTackToeTurn("x")) {
+                    System.out.println(user + " wins!");
+                    break;
+                }
+            }
+            user = "o";
+            ticTacToe.printTicTacToe();
+            if (user.equals("o")) {
+                if (playTicTackToeTurn("o")) {
+                    System.out.println(user + " wins!");
+                    break;
+                }
             }
 
         }
+    }
+
+    public Boolean playTicTackToeTurn(String user) {
+        System.out.println(user + "'s turn. Enter x,y coordinate: ");
+        String coordinate = scanner.nextLine();
+        ticTacToe.playerTurn(user, coordinate);
+        return checkTrue(user);
     }
 
 
