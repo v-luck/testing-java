@@ -4,7 +4,7 @@ public class TicTacToe {
     String[][] arrays;
 
     public TicTacToe() {
-        this.arrays = new String[][]{new String[]{"_", "_", "_", "_"},new String[]{"_", "_", "_", "_"} ,new String[]{"_", "_", "_", "_"}};
+        this.arrays = new String[][]{new String[]{"_", "_", "_"},new String[]{"_", "_", "_"} ,new String[]{"_", "_", "_"}};
     }
 
     public void playerTurn(String user, String point) {
