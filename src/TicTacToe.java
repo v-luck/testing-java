@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.util.Scanner;
 
 public class TicTacToe {
     String[][] arrays;
@@ -10,7 +11,15 @@ public class TicTacToe {
     public void playerTurn(String user, String point) {
         String[] userPoint = point.split(",");
         String[] yArray = this.arrays[(Integer.valueOf(userPoint[1]))-1];
-        Array.set(yArray, Integer.valueOf(userPoint[0])-1, user);
+        if (yArray[Integer.valueOf(userPoint[0]) - 1] == "_") {
+            Array.set(yArray, Integer.valueOf(userPoint[0]) - 1, user);
+        } else {
+            System.out.println("That was already picked");
+            System.out.print("Enter new point: ");
+            Scanner scanner = new Scanner(System.in);
+            String userRepeatedPoint = scanner.nextLine();
+            playerTurn(user, userRepeatedPoint);
+        }
     }
 
     public boolean connectThreeHorizontal(String user) {
