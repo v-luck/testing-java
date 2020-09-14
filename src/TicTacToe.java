@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class TicTacToe {
     String[][] arrays;
 
+
     public TicTacToe() {
         this.arrays = new String[][]{new String[]{"_", "_", "_"},new String[]{"_", "_", "_"} ,new String[]{"_", "_", "_"}};
     }
@@ -14,8 +15,7 @@ public class TicTacToe {
         if (yArray[Integer.valueOf(userPoint[0]) - 1] == "_") {
             Array.set(yArray, Integer.valueOf(userPoint[0]) - 1, user);
         } else {
-            System.out.println("That was already picked");
-            System.out.print("Enter new point: ");
+            System.out.print("That was already picked\nEnter new point: ");
             Scanner scanner = new Scanner(System.in);
             String userRepeatedPoint = scanner.nextLine();
             playerTurn(user, userRepeatedPoint);
